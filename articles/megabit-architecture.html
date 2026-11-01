@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0d0c">
+  <meta name="description" content="شرح تقني لبنية MegaBit Wifi: تكامل Android وWebView، فحص شبكة LAN، مراقبة البيانات وإشارة Wi-Fi، وإدارة الراوترات المتوافقة.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="كيف يعمل MegaBit؟ البنية التقنية لفحص الشبكة والتحكم بالراوتر">
+  <meta property="og:description" content="نظرة مبسطة على معمارية Android وWebView ومسار بيانات فحص الشبكة وإدارة الراوتر في MegaBit Wifi.">
+  <meta property="og:image" content="../assets/megabit-pro-icon.png">
+  <link rel="icon" type="image/png" href="../assets/megabit-pro-icon.png">
+  <link rel="stylesheet" href="../articles.css">
+  <script src="../language.js" defer></script>
+  <title>كيف يعمل MegaBit؟ البنية التقنية للشبكات والراوتر | MegaBit Wifi</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "كيف يعمل MegaBit؟ البنية التقنية لفحص الشبكة والتحكم بالراوتر",
+    "description": "شرح تقني مبسط لمعمارية Android وWebView، وفحص الشبكة المحلية، ومراقبة الاتصال، وإدارة الراوتر في MegaBit Wifi.",
+    "inLanguage": "ar",
+    "datePublished": "2026-11-01",
+    "dateModified": "2026-11-01",
+    "author": {"@type": "Organization", "name": "MegaBit Wifi"},
+    "publisher": {"@type": "Organization", "name": "MegaBit Wifi"}
+  }
+  </script>
+  <link rel="canonical" href="https://nexorastudiodevv-ctrl.github.io/MegaBit-/articles/megabit-architecture.html">
+  <link rel="alternate" hreflang="ar" href="https://nexorastudiodevv-ctrl.github.io/MegaBit-/articles/megabit-architecture.html">
+  <link rel="alternate" hreflang="en" href="https://nexorastudiodevv-ctrl.github.io/MegaBit-/articles/megabit-architecture.html?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://nexorastudiodevv-ctrl.github.io/MegaBit-/articles/megabit-architecture.html">
+</head>
+<body>
+  <header class="topbar wrap">
+    <a class="brand" href="../index.html" aria-label="MegaBit Wifi — الصفحة الرئيسية">
+      <img src="../assets/megabit-pro-icon.png" alt="">
+      <span>MegaBit <span class="brand-pro">Wifi</span></span>
+    </a>
+    <div class="top-actions">
+      <a class="nav-link" href="index.html">كل المقالات</a>
+      <div class="top-download-group"><a class="header-download" href="https://play.google.com/store/apps/details?id=com.albahnabwi.megabitpro&amp;pcampaignid=web_share" target="_blank" rel="noopener noreferrer">حمّل التطبيق ↗</a><span class="free-badge">مجاني</span></div>
+    </div>
+  </header>
+  <main class="article-shell wrap">
+    <nav class="breadcrumb" aria-label="مسار التنقل">
+      <a href="../index.html">الرئيسية</a><span aria-hidden="true">/</span><a href="index.html">المقالات</a><span aria-hidden="true">/</span><span>البنية التقنية</span>
+    </nav>
+    <header class="article-header">
+      <div class="kicker">شرح تقني · Android والشبكات · 1 نوفمبر 2026</div>
+      <h1>كيف يعمل MegaBit؟ البنية التقنية لفحص الشبكة والتحكم بالراوتر</h1>
+      <p>شرح مبسط للمعمارية التي تجمع تطبيق Android الأصلي وواجهة WebView، وكيف تنتقل طلبات فحص الشبكة ومراقبة الاتصال وإدارة الراوتر إلى نتائج واضحة للمستخدم.</p>
+    </header>
+    <article class="article-body">
+      <p>يعتمد MegaBit على فصل واجهة الاستخدام عن الوظائف التي تحتاج إلى Android أو الاتصال بالشبكة المحلية. تعرض الواجهة المعلومات، بينما تنفذ طبقة النظام المهام المناسبة لصلاحيات الجهاز، ثم تعيد نتائج منظمة إلى الواجهة. يساعد هذا الفصل على إبقاء التطبيق مستجيباً أثناء عمليات الفحص، مع مراعاة اختلاف إصدارات Android وأجهزة الراوتر.</p>
+
+      <h2>معمارية هجينة: Android وواجهة WebView</h2>
+      <p>تُنفذ وظائف النظام في تطبيق Android الأصلي باستخدام Java وAndroid SDK، بينما تُبنى أجزاء من الواجهة باستخدام HTML وCSS وJavaScript داخل WebView. عند طلب وظيفة أصلية، مثل قراءة حالة الشبكة، تمرر طبقة ربط JavaScriptInterface طلباً محدداً إلى التطبيق، ثم تعيد النتيجة بصيغة JSON لعرضها في الشاشة.</p>
+      <ol>
+        <li>تطلب الواجهة عملية واضحة، مثل تحديث قائمة الأجهزة أو قراءة مؤشرات الاتصال.</li>
+        <li>تتحقق طبقة Android من حالة الاتصال والأذونات وإمكانات الجهاز.</li>
+        <li>تنفذ المهام التي قد تستغرق وقتاً في مسارات خلفية، فلا تتوقف استجابة الواجهة.</li>
+        <li>تعود النتيجة بصيغة موحدة، مع حالة نجاح أو سبب مفهوم عند تعذر الإجراء.</li>
+      </ol>
+      <aside class="callout"><strong>مبدأ أمني:</strong> ينبغي أن تقتصر واجهة WebView على الدوال المطلوبة فقط، وأن تتحقق طبقة Android من المدخلات والأذونات قبل تنفيذها. لا ينبغي كشف واجهات نظام عامة أو بيانات اعتماد للصفحة.</aside>
+
+      <h2>فحص الشبكة المحلية واكتشاف الأجهزة</h2>
+      <p>يعمل ماسح الشبكة ضمن الشبكة المحلية التي يختار المستخدم فحصها. ينفذ التطبيق عمليات تحقق متزامنة لقياس استجابة العناوين المتاحة، ثم يجمع ما يستطيع النظام والشبكة تقديمه من معلومات مثل اسم المضيف وعنوان MAC والشركة المصنّعة. قد تساعد هذه البيانات على تمييز هاتف عن حاسوب أو راوتر، لكنها مؤشرات وليست إثباتاً لهوية الجهاز أو مالكه.</p>
+      <p>لا يمكن ضمان ظهور كل جهاز في كل فحص؛ فقد تمنع إعدادات الراوتر أو عزل الأجهزة أو جدار الحماية الاستجابة، كما قد تتغير عناوين MAC الخاصة بالهواتف. لذلك تُعرض نتائج الفحص كقائمة للأجهزة التي أمكن ملاحظتها، ويظل تأكيد هوية الجهاز مسؤولية المستخدم.</p>
+      <aside class="callout">استخدم أدوات الفحص على شبكتك أو شبكة لديك إذن بإدارتها فقط. صُممت هذه الوظيفة لإدارة الشبكة المحلية، وليست لمسح شبكات عامة أو أجهزة خارج نطاقك.</aside>
+
+      <h2>وحدات الراوتر: تكامل بحسب الطراز والبرنامج الثابت</h2>
+      <p>تختلف واجهات الإدارة بين الشركات والطرازات؛ لذلك تعتمد إدارة الراوتر على وحدات توافق مخصصة تتعامل مع واجهة الجهاز بعد اتصال المستخدم بشبكته وتسجيل الدخول. يمكن أن تشمل الوظائف المتاحة عرض الأجهزة، وتعديل اسم الشبكة أو كلمة مرورها، وإعدادات الوصول أو إعادة التشغيل، لكن توفر كل وظيفة يتوقف على الطراز والبرنامج الثابت وطريقة المصادقة.</p>
+      <p>تُرسل الطلبات إلى الراوتر المحلي وتُعالج الاستجابات قبل عرضها في الواجهة. يجب حماية بيانات الجلسة وكلمات المرور، وعدم تسجيلها في سجلات التطبيق أو مشاركتها مع واجهة الويب بلا حاجة. كما أن ترميز Base64، إن استُخدم ضمن بروتوكول جهاز، ليس تشفيراً بحد ذاته ولا يحل محل قناة اتصال ومصادقة آمنتين.</p>
+
+      <h2>مراقبة حركة البيانات وقوة إشارة Wi‑Fi</h2>
+      <p>يمكن للتطبيق قراءة عدادات حركة البيانات التي يتيحها Android ومقارنة قيمها عبر فواصل زمنية لعرض تقدير لمعدل النقل. هذه القراءة مفيدة لمراقبة النشاط على الهاتف، لكنها ليست بديلاً عن اختبار سرعة الإنترنت إلى خادم خارجي، وقد تختلف عما يعرضه الراوتر أو مزود الخدمة.</p>
+      <p>أما إشارة Wi‑Fi، فيوفر Android قيماً مثل RSSI بوحدة dBm. تتأثر القراءة بمكان الهاتف والعوائق والنطاق والتداخل؛ لذا فهي مؤشر تقريبي للمقارنة، وليست نسبة موحدة تضمن جودة التغطية في كل جهاز.</p>
+
+      <h2>تقنيات التطبيق ومسار البيانات</h2>
+      <ul>
+        <li><strong>Java وAndroid SDK:</strong> الوصول إلى الشبكة وأذونات الجهاز وخدمات Android.</li>
+        <li><strong>HTML وCSS وJavaScript:</strong> واجهات WebView وتفاعلات التطبيق.</li>
+        <li><strong>JavaScriptInterface وJSON:</strong> جسر محدود لتبادل الطلبات والنتائج بين الواجهة والطبقة الأصلية.</li>
+        <li><strong>Executors ومهام الخلفية:</strong> تنفيذ الفحص والطلبات دون حجب واجهة المستخدم.</li>
+        <li><strong>OkHttp:</strong> إدارة اتصالات HTTP المحلية مع وحدات الراوتر المتوافقة.</li>
+        <li><strong>مكونات Android:</strong> استقبال تحديثات حالة الشبكة ونتائج فحص Wi‑Fi وفق الأذونات المتاحة.</li>
+        <li><strong>Google Play Core وAdMob:</strong> دعم تحديثات التطبيق والإعلانات عند تفعيلها ضمن نسخة التطبيق.</li>
+      </ul>
+
+      <h2>الأمان والحدود العملية</h2>
+      <p>تعتمد سلامة الاستخدام على الاتصال بالراوتر الصحيح، والتحقق من هوية الجهاز قبل حظره، واستخدام كلمة مرور قوية وتشفير Wi‑Fi حديث. تصفية MAC أداة إضافية لإدارة الوصول وليست وسيلة حماية كافية بمفردها، لأن عنوان MAC قد يتغير أو ينتحل. كما لا يستطيع التطبيق تجاوز قيود Android أو إجبار الجهاز على إيقاف تطبيقات أخرى أو تحسين باقة الإنترنت نفسها.</p>
+      <p>تختلف وظائف الفحص وإدارة الراوتر باختلاف الجهاز والطراز والبرنامج الثابت والأذونات. راجع معلومات التوافق وسياسة الخصوصية في التطبيق لمعرفة طريقة تخزين البيانات والخدمات المفعلة في الإصدار الذي تستخدمه.</p>
+
+      <section class="faq" aria-labelledby="faq-title">
+        <h2 id="faq-title">أسئلة تقنية شائعة</h2>
+        <details>
+          <summary>هل يضمن فحص الشبكة اكتشاف كل الأجهزة المتصلة؟</summary>
+          <p>لا. قد تمنع إعدادات الراوتر أو جدار الحماية استجابة بعض الأجهزة، وقد تتغير عناوينها. الفحص يعرض الأجهزة التي أمكن ملاحظتها ولا يثبت هوية مالكها.</p>
+        </details>
+        <details>
+          <summary>هل عدادات Android هي نفسها اختبار سرعة الإنترنت؟</summary>
+          <p>لا. عدادات النظام تقدّر حركة البيانات على الهاتف خلال مدة معينة، أما اختبار السرعة فيقيس الاتصال بخادم اختبار. قد تختلف النتيجتان بحسب الشبكة والتطبيق والطريقة.</p>
+        </details>
+        <details>
+          <summary>هل يمكن لكل هاتف إيقاف التطبيقات الخلفية أو تقوية إشارة الشبكة؟</summary>
+          <p>لا. Android يقيّد التحكم بتطبيقات أخرى وإعدادات الراديو، وتختلف الإمكانات حسب إصدار النظام والشركة المصنّعة والأذونات. يستطيع التطبيق العمل ضمن ما تسمح به هذه الحدود فقط.</p>
+        </details>
+        <details>
+          <summary>هل تصفية MAC وحدها تمنع اختراق شبكة Wi‑Fi؟</summary>
+          <p>لا. تصفية MAC إجراء إضافي لإدارة الأجهزة، وليست بديلاً عن كلمة مرور قوية وتشفير حديث وتحديث البرنامج الثابت للراوتر.</p>
+        </details>
+      </section>
+      <p>للتعرّف على الخطوات العملية، اقرأ <a href="wifi-network-guide.html">دليل معرفة الأجهزة المتصلة بالواي فاي وتحسين الشبكة</a>، أو <a href="wifi-radar.html">دليل رادار تحليل شبكات الواي فاي</a>.</p>
+    </article>
+  </main>
+  <footer class="footer wrap">
+    <a class="brand" href="../index.html"><img src="../assets/megabit-pro-icon.png" alt=""><span>MegaBit <span class="brand-pro">Wifi</span></span></a>
+    <a class="nav-link" href="index.html">كل المقالات</a>
+    <span>© 2026 MegaBit Wifi</span>
+  </footer>
+</body>
+</html>

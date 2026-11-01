@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0d0c">
+  <meta name="description" content="دليل وضع الألعاب في MegaBit Wifi: مؤشرات Ping وJitter وفقدان الحزم، ونافذة الأداء العائمة ومكتبة الألعاب.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="وضع الألعاب في MegaBit Wifi: راقب Ping وأداء اللعب">
+  <meta property="og:description" content="شرح عملي لمؤشرات Game Mode، ونافذة الأداء العائمة، ومكتبة الألعاب، مع نصائح واقعية للحد من التأخير.">
+  <meta property="og:image" content="../assets/game-mode-dashboard.png">
+  <link rel="icon" type="image/png" href="../assets/megabit-pro-icon.png">
+  <link rel="stylesheet" href="../articles.css">
+  <script src="../language.js" defer></script>
+  <title>وضع الألعاب في MegaBit Wifi: راقب Ping وأداء اللعب</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "وضع الألعاب في MegaBit Wifi: راقب Ping وأداء اللعب",
+    "description": "شرح عملي لمؤشرات Game Mode، ونافذة الأداء العائمة، ومكتبة الألعاب، مع نصائح واقعية للحد من التأخير.",
+    "inLanguage": "ar",
+    "datePublished": "2026-11-01",
+    "dateModified": "2026-11-01",
+    "author": {"@type": "Organization", "name": "MegaBit Wifi"},
+    "publisher": {"@type": "Organization", "name": "MegaBit Wifi"},
+    "image": "../assets/game-mode-dashboard.png"
+  }
+  </script>
+  <link rel="canonical" href="https://nexorastudiodevv-ctrl.github.io/MegaBit-/articles/game-mode.html">
+  <link rel="alternate" hreflang="ar" href="https://nexorastudiodevv-ctrl.github.io/MegaBit-/articles/game-mode.html">
+  <link rel="alternate" hreflang="en" href="https://nexorastudiodevv-ctrl.github.io/MegaBit-/articles/game-mode.html?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://nexorastudiodevv-ctrl.github.io/MegaBit-/articles/game-mode.html">
+</head>
+<body>
+  <header class="topbar wrap">
+    <a class="brand" href="../index.html" aria-label="MegaBit Wifi — الصفحة الرئيسية">
+      <img src="../assets/megabit-pro-icon.png" alt="">
+      <span>MegaBit <span class="brand-pro">Wifi</span></span>
+    </a>
+    <div class="top-actions">
+      <a class="nav-link" href="index.html">كل المقالات</a>
+      <div class="top-download-group">
+        <a class="header-download" href="https://play.google.com/store/apps/details?id=com.albahnabwi.megabitpro&amp;pcampaignid=web_share" target="_blank" rel="noopener noreferrer">حمّل التطبيق ↗</a>
+        <span class="free-badge">مجاني</span>
+      </div>
+    </div>
+  </header>
+  <main class="article-shell wrap">
+    <nav class="breadcrumb" aria-label="مسار التنقل">
+      <a href="../index.html">الرئيسية</a><span aria-hidden="true">/</span><a href="index.html">المقالات</a><span aria-hidden="true">/</span><span>وضع الألعاب</span>
+    </nav>
+    <header class="article-header">
+      <div class="kicker">
+        <span data-language="ar">دليل عملي · الألعاب ومؤشرات الشبكة · 1 نوفمبر 2026</span>
+        <span data-language="en" hidden>PRACTICAL GUIDE · GAMING AND NETWORK METRICS · NOVEMBER 1, 2026</span>
+      </div>
+      <h1>
+        <span data-language="ar">وضع الألعاب في MegaBit Wifi: راقب Ping وأداء اللعب</span>
+        <span data-language="en" hidden>MegaBit Wifi Game Mode: Monitor Ping and Gaming Performance</span>
+      </h1>
+      <p>
+        <span data-language="ar">يعرض وضع الألعاب مؤشرات تساعدك على فهم الاتصال وأداء الهاتف أثناء اللعب، من Ping وJitter إلى فقدان الحزم وبيانات نافذة الأداء العائمة. إليك كيفية قراءة هذه البيانات واستخدامها بواقعية.</span>
+        <span data-language="en" hidden>Game Mode displays metrics that help you understand your connection and phone performance while gaming, from ping and jitter to packet loss and a floating performance overlay. Learn how to read and use these metrics realistically.</span>
+      </p>
+    </header>
+
+    <figure class="article-visual">
+      <img src="../assets/game-mode-dashboard.png" alt="واجهة وضع الألعاب في MegaBit Wifi تعرض تقييم الاتصال ومؤشرات Ping وJitter وفقدان الحزم">
+      <figcaption>
+        <span data-language="ar">واجهة وضع الألعاب في MegaBit Wifi ومؤشرات الاتصال أثناء اللعب.</span>
+        <span data-language="en" hidden>MegaBit Wifi Game Mode and connection metrics during gameplay.</span>
+      </figcaption>
+    </figure>
+
+    <article class="article-body">
+      <h2>
+        <span data-language="ar">ما هو وضع الألعاب؟</span>
+        <span data-language="en" hidden>What is Game Mode?</span>
+      </h2>
+      <p>
+        <span data-language="ar">يجمع Game Mode أدوات لمتابعة جودة الشبكة ومعلومات الأداء في شاشة واحدة. تساعدك هذه اللوحة على ملاحظة تغير الاتصال ومعرفة ما إذا كانت المشكلة مرتبطة بارتفاع زمن الاستجابة أو تذبذبه أو فقدان بعض الحزم، بدلاً من الاعتماد على الانطباع وحده.</span>
+        <span data-language="en" hidden>Game Mode brings network-quality and performance information together in one screen. It helps you notice connection changes and determine whether an issue may involve high latency, jitter, or packet loss instead of relying on impressions alone.</span>
+      </p>
+      <p>
+        <span data-language="ar">لا يستطيع التطبيق إزالة التأخير في كل لعبة أو تجاوز ازدحام الشبكة وخادم اللعبة. تعتمد التجربة على الراوتر ومزود الإنترنت وموقع الخادم والجهاز، لذلك استخدم المؤشرات لتشخيص الظروف ومقارنة الإعدادات، لا كضمان للفوز أو لاتصال خالٍ من التأخير.</span>
+        <span data-language="en" hidden>The app cannot eliminate lag in every game or bypass network congestion and game-server conditions. Your experience depends on the router, internet provider, server location, and device. Use the metrics to understand and compare conditions, not as a guarantee of winning or lag-free play.</span>
+      </p>
+
+      <h2>
+        <span data-language="ar">مؤشرات الاتصال التي تهم اللاعبين</span>
+        <span data-language="en" hidden>Connection metrics that matter to gamers</span>
+      </h2>
+      <ul>
+        <li><strong>Ping:</strong>
+          <span data-language="ar"> زمن استجابة الاتصال إلى نقطة القياس أو الخادم، ويُعرض عادةً بالمللي ثانية. انخفاضه قد يجعل التفاعل أسرع، لكنه يتأثر بمسافة الخادم والازدحام.</span>
+          <span data-language="en" hidden> The connection response time to a measurement endpoint or server, usually shown in milliseconds. Lower values can feel more responsive, but server distance and congestion also matter.</span>
+        </li>
+        <li><strong>Jitter:</strong>
+          <span data-language="ar"> مقدار تغير زمن الاستجابة بين القياسات. التذبذب الكبير قد يجعل اللعب غير متسق حتى عندما تبدو قيمة Ping المتوسطة مقبولة.</span>
+          <span data-language="en" hidden> How much response time varies between measurements. High jitter can make gameplay inconsistent even when average ping looks acceptable.</span>
+        </li>
+        <li><strong>Packet Loss:</strong>
+          <span data-language="ar"> نسبة الحزم التي لم تصل كما هو متوقع خلال القياس. قد يرتبط فقدان الحزم بتقطّع أو تأخر في تحديث الحالة داخل اللعبة.</span>
+          <span data-language="en" hidden> The share of packets that did not arrive as expected during measurement. Packet loss may contribute to stuttering or delayed game-state updates.</span>
+        </li>
+        <li><strong><span data-language="ar">تقييم الاتصال:</span><span data-language="en" hidden>Connection score:</span></strong>
+          <span data-language="ar"> مؤشر تلخيصي لحالة الاتصال المعروضة، وليس معياراً موحداً لجاهزية اللعب التنافسي أو نتيجة مضمونة للأداء.</span>
+          <span data-language="en" hidden> A summary of the displayed connection status, not a universal measure of competitive readiness or a guaranteed performance result.</span>
+        </li>
+      </ul>
+
+      <h2>
+        <span data-language="ar">ما الذي تعرضه نافذة الأداء العائمة؟</span>
+        <span data-language="en" hidden>What does the floating performance overlay show?</span>
+      </h2>
+      <p>
+        <span data-language="ar">عند تفعيل الإذن المناسب، يمكن أن تعرض النافذة العائمة معلومات مختارة فوق اللعبة، مثل Ping وRAM ومؤشرات الجهاز. تتيح لك متابعة الحالة دون مغادرة اللعب، ويعتمد توفر البيانات ومظهرها على إصدار التطبيق والهاتف وإصدار Android.</span>
+        <span data-language="en" hidden>When the required permission is enabled, the floating overlay can show selected information over a game, such as ping, RAM, and device metrics. It lets you check status without leaving the game. Available data and appearance depend on the app version, phone, and Android version.</span>
+      </p>
+      <figure class="article-visual">
+        <img src="../assets/game-mode-overlay.png" alt="نافذة MegaBit Wifi العائمة فوق اللعبة تعرض مؤشري RAM وPing">
+        <figcaption>
+          <span data-language="ar">مثال على نافذة متابعة عائمة؛ قد تتطلب إذن الظهور فوق التطبيقات الأخرى.</span>
+          <span data-language="en" hidden>Example of the floating monitor; it may require display-over-other-apps permission.</span>
+        </figcaption>
+      </figure>
+      <aside class="callout">
+        <strong>
+          <span data-language="ar">تنبيه:</span>
+          <span data-language="en" hidden>Note:</span>
+        </strong>
+        <span data-language="ar"> قد يؤدي منح إذن الظهور فوق التطبيقات إلى عرض عناصر فوق شاشات أخرى. فعّله للتطبيق الذي تثق به فقط، ويمكنك إيقافه من إعدادات Android.</span>
+        <span data-language="en" hidden> Display-over-other-apps permission can place content above other screens. Grant it only to apps you trust, and disable it in Android settings when not needed.</span>
+      </aside>
+
+      <h2>
+        <span data-language="ar">مكتبة الألعاب والأولوية</span>
+        <span data-language="en" hidden>Game library and priority</span>
+      </h2>
+      <p>
+        <span data-language="ar">تساعد مكتبة الألعاب على اختيار اللعبة المدعومة وفتحها من داخل التطبيق، مع إعدادات أو متابعة مرتبطة بوضع الألعاب بحسب الإصدار. وقد تشمل الألعاب الشائعة مثل PUBG Mobile وFree Fire وCall of Duty: Mobile إذا ظهرت ضمن قائمة النسخة المثبتة.</span>
+        <span data-language="en" hidden>The game library can help you select and launch a supported game from the app, with Game Mode settings or monitoring depending on the version. Popular titles such as PUBG Mobile, Free Fire, and Call of Duty: Mobile may appear if supported in your installed version.</span>
+      </p>
+      <p>
+        <span data-language="ar">تساعد خيارات الأولوية على تنظيم تجربة الاستخدام، لكن Android لا يمنح تطبيقاً عادياً تحكماً مطلقاً بعرض النطاق الترددي أو قدرة عامة على منع كل التطبيقات الأخرى من إرسال البيانات. قد تختلف آلية الأولوية والميزات المتاحة حسب صلاحيات النظام وطريقة اتصال الجهاز.</span>
+        <span data-language="en" hidden>Priority options can help organize the experience, but Android does not give a regular app absolute control over bandwidth or a general ability to stop every other app from sending data. How prioritization works and which features are available depend on system permissions and the device connection.</span>
+      </p>
+
+      <h2>
+        <span data-language="ar">خطوات عملية لجلسة لعب أكثر استقراراً</span>
+        <span data-language="en" hidden>Practical steps for a more stable gaming session</span>
+      </h2>
+      <ol>
+        <li>
+          <span data-language="ar">اتصل بشبكة موثوقة، وجرّب الاقتراب من الراوتر أو استخدام اتصال سلكي إذا كان جهاز اللعب يدعمه.</span>
+          <span data-language="en" hidden>Connect to a trusted network, try moving closer to the router, or use a wired connection if your gaming device supports it.</span>
+        </li>
+        <li>
+          <span data-language="ar">شغّل اللعبة وافتح وضع الألعاب، ثم راقب Ping وJitter وفقدان الحزم أثناء اللعب الفعلي.</span>
+          <span data-language="en" hidden>Launch your game and open Game Mode, then monitor ping, jitter, and packet loss during actual gameplay.</span>
+        </li>
+        <li>
+          <span data-language="ar">أوقف التنزيلات والبث غير الضروريين على الشبكة، ثم قارن النتائج في أوقات مختلفة.</span>
+          <span data-language="en" hidden>Pause unnecessary downloads and streaming on the network, then compare results at different times.</span>
+        </li>
+        <li>
+          <span data-language="ar">إذا استخدمت VPN، قارن الاتصال به وبدونه؛ قد يحسّن المسار في بعض الحالات أو يزيد التأخير في حالات أخرى.</span>
+          <span data-language="en" hidden>If you use a VPN, compare the connection with and without it; it may improve routing in some cases or add latency in others.</span>
+        </li>
+        <li>
+          <span data-language="ar">فعّل إذن نافذة الأداء عند الحاجة فقط، وراجع إعدادات توفير الطاقة والتطبيقات الخلفية في هاتفك.</span>
+          <span data-language="en" hidden>Enable overlay permission only when needed, and review battery-saving and background-app settings on your phone.</span>
+        </li>
+      </ol>
+
+      <h2>
+        <span data-language="ar">حل المشكلات الشائعة</span>
+        <span data-language="en" hidden>Common troubleshooting</span>
+      </h2>
+      <ul>
+        <li>
+          <strong><span data-language="ar">ارتفاع Ping:</span><span data-language="en" hidden>High ping:</span></strong>
+          <span data-language="ar"> جرّب خادماً أقرب داخل إعدادات اللعبة، وافحص الاتصال قرب الراوتر. تبديل VPN قد يساعد أحياناً، لكنه ليس حلاً مضموناً.</span>
+          <span data-language="en" hidden> Try a closer server in the game settings and test near your router. Switching VPN routes may help sometimes, but it is not guaranteed.</span>
+        </li>
+        <li>
+          <strong><span data-language="ar">تذبذب أو فقدان حزم:</span><span data-language="en" hidden>Jitter or packet loss:</span></strong>
+          <span data-language="ar"> قلّل ازدحام الشبكة، وأعد تشغيل الراوتر عند الحاجة، وتحقق من وجود تحديثات للبرنامج الثابت.</span>
+          <span data-language="en" hidden> Reduce network congestion, restart the router if needed, and check for firmware updates.</span>
+        </li>
+        <li>
+          <strong><span data-language="ar">النافذة العائمة لا تظهر:</span><span data-language="en" hidden>The floating overlay does not appear:</span></strong>
+          <span data-language="ar"> تحقق من إذن الظهور فوق التطبيقات، ومن قيود البطارية أو الأذونات الخاصة بهاتفك.</span>
+          <span data-language="en" hidden> Check display-over-other-apps permission and any battery or permission restrictions on your phone.</span>
+        </li>
+        <li>
+          <strong><span data-language="ar">اللعبة غير موجودة في المكتبة:</span><span data-language="en" hidden>A game is missing from the library:</span></strong>
+          <span data-language="ar"> حدّث قائمة الألعاب أو افتح اللعبة بالطريقة المعتادة؛ توفر المكتبة ودعم الألعاب قد يختلفان حسب الإصدار.</span>
+          <span data-language="en" hidden> Refresh the game list or open the game normally; library availability and game support can vary by version.</span>
+        </li>
+      </ul>
+      <aside class="callout">
+        <strong>
+          <span data-language="ar">الخلاصة:</span>
+          <span data-language="en" hidden>In short:</span>
+        </strong>
+        <span data-language="ar"> وضع الألعاب يمنحك رؤية أوضح لمؤشرات الشبكة والجهاز وأدوات متابعة أثناء اللعب. أما خفض التأخير أو تحسين FPS فيعتمد على اللعبة والشبكة والهاتف، ولا يمكن ضمانه في كل الظروف.</span>
+        <span data-language="en" hidden> Game Mode gives you clearer visibility into network and device metrics and monitoring tools while you play. Reducing latency or improving FPS depends on the game, network, and phone, and cannot be guaranteed in every situation.</span>
+      </aside>
+    </article>
+    <nav class="section-nav" aria-label="مقالات وصفحات ذات صلة">
+      <a href="index.html"><span data-language="ar">كل المقالات</span><span data-language="en" hidden>All articles</span></a>
+      <a href="../sections/gaming.html"><span data-language="ar">صفحة وضع الألعاب</span><span data-language="en" hidden>Game Mode page</span></a>
+      <a href="../sections/optimization.html"><span data-language="ar">قياس الشبكة</span><span data-language="en" hidden>Network metrics</span></a>
+      <a href="../sections/wifi.html"><span data-language="ar">محلل Wi-Fi</span><span data-language="en" hidden>Wi-Fi Analyzer</span></a>
+      <a href="../sections/index.html"><span data-language="ar">كل الأقسام</span><span data-language="en" hidden>All sections</span></a>
+    </nav>
+  </main>
+  <footer class="footer wrap">
+    <a class="brand" href="../index.html"><img src="../assets/megabit-pro-icon.png" alt=""><span>MegaBit <span class="brand-pro">Wifi</span></span></a>
+    <a class="nav-link" href="index.html"><span data-language="ar">كل المقالات</span><span data-language="en" hidden>All articles</span></a>
+    <span>© 2026 MegaBit Wifi</span>
+  </footer>
+</body>
+</html>
