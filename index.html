@@ -234,6 +234,49 @@
       background: #0b0d0c;
       transition: border-color .2s ease;
     }
+    .phone-stage {
+      width: min(100% - 28px, 440px);
+      display: grid;
+      grid-template-columns: minmax(42px, 1fr) auto minmax(112px, 1fr);
+      align-items: center;
+      gap: 12px;
+    }
+    .phone-free {
+      justify-self: start;
+      color: #e6c46f;
+      font-size: 15px;
+      font-weight: 700;
+      white-space: nowrap;
+      animation: gold-pulse 2.8s ease-in-out infinite;
+    }
+    .phone-download {
+      min-width: 112px;
+      min-height: 68px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 12px 14px;
+      border: 1px solid rgba(50, 215, 75, .55);
+      background: #141816;
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 650;
+      line-height: 1.6;
+      text-align: center;
+      transition: border-color .18s ease, background .18s ease, transform .18s ease;
+    }
+    .phone-download:hover {
+      border-color: var(--green);
+      background: #1a201b;
+      transform: translateY(-2px);
+    }
+    .phone-download:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
+    .phone-download svg { width: 16px; height: 16px; flex: 0 0 16px; color: var(--green); }
+    @keyframes gold-pulse {
+      0%, 100% { opacity: .78; text-shadow: 0 0 0 rgba(230, 196, 111, 0); }
+      50% { opacity: 1; text-shadow: 0 0 12px rgba(230, 196, 111, .42); }
+    }
     .phone::before {
       width: 58px;
       height: 10px;
@@ -438,6 +481,8 @@
       .hero { min-height: auto; gap: 14px; padding-block: 65px 54px; grid-template-columns: 1fr 1fr; }
       .hero-copy { max-width: 390px; }
       .hero-visual { min-height: 520px; }
+      .phone-stage { width: calc(100% - 12px); grid-template-columns: 38px minmax(0, 1fr) 90px; gap: 8px; }
+      .phone-stage .phone { width: 100%; height: auto; aspect-ratio: 236 / 470; }
       h1 { font-size: clamp(45px, 7vw, 64px); }
       .nav-links { gap: 20px; }
       .trust-strip { flex-wrap: wrap; justify-content: center; padding-block: 19px; }
@@ -455,6 +500,11 @@
       .hero { grid-template-columns: 1fr; gap: 18px; padding-block: 46px 39px; }
       .hero-copy { grid-column: 1; grid-row: 1; justify-self: stretch; max-width: none; }
       .hero-visual { grid-column: 1; grid-row: 2; min-height: 540px; margin-top: 4px; transform: none; }
+      .phone-stage { width: calc(100% - 12px); grid-template-columns: 34px minmax(0, 1fr) 78px; gap: 6px; }
+      .phone-stage .phone { width: 100%; height: auto; aspect-ratio: 236 / 470; }
+      .phone-free { font-size: 11px; }
+      .phone-download { min-width: 0; min-height: 74px; flex-direction: column; gap: 3px; padding: 8px 4px; font-size: 11px; }
+      .phone-download svg { width: 18px; height: 18px; flex-basis: 18px; }
       h1 { max-width: 440px; margin-top: 22px; font-size: clamp(49px, 12vw, 68px); }
       .hero-description { max-width: 390px; font-size: 13px; }
       .hero-actions { margin-top: 26px; }
@@ -535,10 +585,17 @@
 
         <div class="hero-visual" aria-label="معاينة واجهة تطبيق MegaBit Wifi">
           <div class="visual-meta" aria-hidden="true"><span>معاينة من التطبيق</span><span class="live-mark">● اتصال آمن</span></div>
-          <div class="phone">
-            <div class="phone-screen">
-              <img src="assets/megabit-home-dashboard.png" alt="الشاشة الرئيسية لتطبيق MegaBit Wifi تعرض قوة الإشارة وأدوات الشبكة">
+          <div class="phone-stage">
+            <span class="phone-free">مجاني</span>
+            <div class="phone">
+              <div class="phone-screen">
+                <img src="assets/megabit-home-dashboard.png" alt="الشاشة الرئيسية لتطبيق MegaBit Wifi تعرض قوة الإشارة وأدوات الشبكة">
+              </div>
             </div>
+            <a class="phone-download" href="https://play.google.com/store/apps/details?id=com.albahnabwi.megabitpro&amp;pcampaignid=web_share" target="_blank" rel="noopener noreferrer" aria-label="تنزيل MegaBit Wifi من Google Play">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 17v3h14v-3" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="miter"/></svg>
+              <span>حمّل التطبيق</span>
+            </a>
           </div>
           <div class="visual-caption" aria-hidden="true"><span>واجهة MegaBit Wifi</span><span>01 / 03</span></div>
         </div>
