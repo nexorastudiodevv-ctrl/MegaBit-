@@ -140,6 +140,24 @@
       font-weight: 550;
       letter-spacing: .025em;
     }
+    .developer-contact {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-bottom: 16px;
+      color: #858d87;
+      font-size: 11px;
+      line-height: 1.8;
+    }
+    .developer-contact a {
+      text-underline-offset: 4px;
+      transition: color .18s ease;
+    }
+    .developer-link { color: #d3d9d4; }
+    .developer-whatsapp { color: #7bdc8a; direction: ltr; }
+    .developer-contact a:hover { color: var(--cyan); text-decoration: underline; }
+    .developer-contact-separator { color: #525a54; }
     .eyebrow-line { width: 28px; height: 1px; background: var(--green); }
     h1 {
       max-width: 560px;
@@ -591,6 +609,11 @@
     <main>
       <section class="hero wrap" aria-labelledby="hero-title">
         <div class="hero-copy" data-reveal>
+          <div class="developer-contact" aria-label="التواصل مع المطور">
+            <a class="developer-link" href="https://ahmed-alfayed.nexorastudio-eg.com/" target="_blank" rel="noopener noreferrer" aria-label="Ahmed AlFayed | مطور أندرويد ومقالات البرمجة والذكاء الاصطناعي">اطلب خدمتك من المطور</a>
+            <span class="developer-contact-separator" aria-hidden="true">·</span>
+            <a class="developer-whatsapp" href="https://wa.me/201152183562" target="_blank" rel="noopener noreferrer" aria-label="تواصل مع المطور عبر واتساب: 01152183562">واتساب: 01152183562</a>
+          </div>
           <div class="eyebrow"><span class="eyebrow-line"></span> أدوات احترافية للشبكات والاتصال</div>
           <h1 id="hero-title">افهم شبكتك.<br><span>تحكّم بها.</span></h1>
           <p class="hero-description">اختبر سرعة الإنترنت، راقب جودة الاتصال، أمّن تصفحك، وأدر الراوتر من أدوات عملية صُمّمت لتضع تفاصيل شبكتك بين يديك.</p>
