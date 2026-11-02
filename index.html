@@ -241,6 +241,33 @@
     .visual-meta .live-mark { color: var(--green); }
     .visual-caption { padding-top: 12px; border-top: 1px solid var(--line); }
     .visual-caption strong { color: var(--white); font-weight: 550; }
+    .carousel-controls { display: flex; align-items: center; gap: 7px; }
+    .carousel-control {
+      width: 28px;
+      height: 28px;
+      display: inline-grid;
+      place-items: center;
+      padding: 0;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: #cbd1cb;
+      cursor: pointer;
+      font-size: 19px;
+      line-height: 1;
+      transition: border-color .18s ease, color .18s ease;
+    }
+    .carousel-control:hover { border-color: var(--green); color: var(--green); }
+    .carousel-control:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
+    .carousel-count { min-width: 43px; color: #858d87; text-align: center; }
+    .visually-hidden {
+      width: 1px;
+      height: 1px;
+      position: absolute;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      clip-path: inset(50%);
+    }
     .phone {
       width: 236px;
       height: 470px;
@@ -259,6 +286,22 @@
       align-items: center;
       gap: 12px;
     }
+    .phone-stage.is-banner {
+      width: min(100% - 44px, 440px);
+      display: flex;
+      justify-content: center;
+    }
+    .phone-stage.is-banner .phone {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 512 / 250;
+      padding: 8px;
+      border-radius: 15px;
+    }
+    .phone-stage.is-banner .phone::before,
+    .phone-stage.is-banner .phone-free,
+    .phone-stage.is-banner .phone-download { display: none; }
+    .phone-stage.is-banner .phone-screen { border-radius: 8px; }
     .phone-free {
       justify-self: start;
       color: #e6c46f;
@@ -343,7 +386,7 @@
       width: 100%;
       height: 100%;
       display: block;
-      object-fit: cover;
+      object-fit: contain;
     }
     .trust-strip {
       display: flex;
@@ -636,9 +679,13 @@
           <div class="visual-meta" aria-hidden="true"><span>معاينة من التطبيق</span><span class="live-mark">● اتصال آمن</span></div>
           <div class="phone-stage">
             <span class="phone-free">مجاني</span>
-            <div class="phone">
+            <div class="phone" data-screenshot-frame>
               <div class="phone-screen">
-                <img src="assets/megabit-home-dashboard.png" alt="الشاشة الرئيسية لتطبيق MegaBit Wifi تعرض قوة الإشارة وأدوات الشبكة">
+                <img
+                  src="assets/megabit-home-dashboard.png"
+                  alt="الشاشة الرئيسية لتطبيق MegaBit Wifi تعرض قوة الإشارة وأدوات الشبكة"
+                  data-screenshot-image
+                >
               </div>
             </div>
             <a class="phone-download" href="https://play.google.com/store/apps/details?id=com.albahnabwi.megabitpro&amp;pcampaignid=web_share" target="_blank" rel="noopener noreferrer" aria-label="تنزيل MegaBit Wifi من Google Play">
@@ -646,7 +693,23 @@
               <span>حمّل التطبيق</span>
             </a>
           </div>
-          <div class="visual-caption" aria-hidden="true"><span>واجهة MegaBit Wifi</span><span>01 / 03</span></div>
+          <div class="visual-caption">
+            <span data-language="ar">لقطات من التطبيق</span>
+            <span data-language="en" hidden>App screenshots</span>
+            <div class="carousel-controls">
+              <button class="carousel-control" type="button" data-screenshot-previous>
+                <span aria-hidden="true">‹</span>
+                <span class="visually-hidden" data-language="ar">اللقطة السابقة</span>
+                <span class="visually-hidden" data-language="en" hidden>Previous screenshot</span>
+              </button>
+              <span class="carousel-count" data-screenshot-count aria-live="polite">01 / 08</span>
+              <button class="carousel-control" type="button" data-screenshot-next>
+                <span aria-hidden="true">›</span>
+                <span class="visually-hidden" data-language="ar">اللقطة التالية</span>
+                <span class="visually-hidden" data-language="en" hidden>Next screenshot</span>
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -1060,6 +1123,125 @@
     </footer>
   </div>
   <script>
+    const appScreenshots = [
+      {
+        src: "assets/megabit-home-dashboard.png",
+        alt: {
+          ar: "الشاشة الرئيسية لتطبيق MegaBit Wifi تعرض قوة الإشارة وأدوات الشبكة",
+          en: "MegaBit Wifi home screen showing signal strength and network tools"
+        }
+      },
+      {
+        src: "assets/megabit-speed-test-screen.png",
+        alt: {
+          ar: "شاشة اختبار سرعة الإنترنت في تطبيق MegaBit Wifi",
+          en: "Internet speed test screen in MegaBit Wifi"
+        }
+      },
+      {
+        src: "assets/wifi-radar-screenshot.png",
+        alt: {
+          ar: "شاشة رادار Wi-Fi لتحليل إشارة الشبكة",
+          en: "Wi-Fi radar screen for analyzing the network signal"
+        }
+      },
+      {
+        src: "assets/game-mode-dashboard.png",
+        alt: {
+          ar: "لوحة وضع الألعاب ومؤشرات جودة الاتصال",
+          en: "Game Mode dashboard with connection quality metrics"
+        }
+      },
+      {
+        src: "assets/connected-devices-preview.png",
+        alt: {
+          ar: "شاشة فحص الأجهزة المتصلة بالشبكة مع إخفاء عناوين IP",
+          en: "Connected devices screen with IP addresses hidden"
+        }
+      },
+      {
+        src: "assets/wifi-networks-preview.png",
+        alt: {
+          ar: "شاشة رادار الشبكات المتاحة وقوة إشاراتها مع إخفاء بيانات التعريف",
+          en: "Available networks radar and signal strengths with identifying details hidden"
+        }
+      },
+      {
+        src: "assets/speed-test-results-preview.jpg",
+        alt: {
+          ar: "نتائج فحص سرعة الإنترنت ومؤشرات الاتصال",
+          en: "Internet speed test results and connection metrics"
+        }
+      },
+      {
+        src: "assets/megabit-promo-banner.png",
+        alt: {
+          ar: "الصورة الترويجية لتطبيق MegaBit لتحليل شبكات Wi-Fi",
+          en: "MegaBit promotional banner for Wi-Fi network analysis"
+        },
+        banner: true
+      }
+    ];
+    const screenshotImage = document.querySelector("[data-screenshot-image]");
+    const screenshotCount = document.querySelector("[data-screenshot-count]");
+    const screenshotCarousel = document.querySelector(".hero-visual");
+    const screenshotStage = document.querySelector(".phone-stage");
+    let activeScreenshot = 0;
+    let screenshotTimer;
+    let pointerInsideCarousel = false;
+    let focusInsideCarousel = false;
+    const showScreenshot = (index) => {
+      activeScreenshot = (index + appScreenshots.length) % appScreenshots.length;
+      const screenshot = appScreenshots[activeScreenshot];
+      screenshotImage.src = screenshot.src;
+      screenshotImage.alt = screenshot.alt[document.documentElement.lang === "en" ? "en" : "ar"];
+      screenshotStage.classList.toggle("is-banner", Boolean(screenshot.banner));
+      screenshotCount.textContent = `${String(activeScreenshot + 1).padStart(2, "0")} / ${String(appScreenshots.length).padStart(2, "0")}`;
+    };
+    const scheduleScreenshot = () => {
+      window.clearTimeout(screenshotTimer);
+      if (pointerInsideCarousel || focusInsideCarousel || document.hidden ||
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      screenshotTimer = window.setTimeout(() => {
+        showScreenshot(activeScreenshot + 1);
+        scheduleScreenshot();
+      }, 3000);
+    };
+    document.querySelector("[data-screenshot-previous]").addEventListener("click", () => {
+      showScreenshot(activeScreenshot - 1);
+      scheduleScreenshot();
+    });
+    document.querySelector("[data-screenshot-next]").addEventListener("click", () => {
+      showScreenshot(activeScreenshot + 1);
+      scheduleScreenshot();
+    });
+    screenshotCarousel.addEventListener("pointerenter", () => {
+      pointerInsideCarousel = true;
+      window.clearTimeout(screenshotTimer);
+    });
+    screenshotCarousel.addEventListener("pointerleave", () => {
+      pointerInsideCarousel = false;
+      scheduleScreenshot();
+    });
+    screenshotCarousel.addEventListener("focusin", () => {
+      focusInsideCarousel = true;
+      window.clearTimeout(screenshotTimer);
+    });
+    screenshotCarousel.addEventListener("focusout", (event) => {
+      if (!screenshotCarousel.contains(event.relatedTarget)) {
+        focusInsideCarousel = false;
+        scheduleScreenshot();
+      }
+    });
+    document.addEventListener("visibilitychange", scheduleScreenshot);
+    window.matchMedia("(prefers-reduced-motion: reduce)").addEventListener("change", scheduleScreenshot);
+    new MutationObserver(() => showScreenshot(activeScreenshot)).observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["lang"]
+    });
+    showScreenshot(activeScreenshot);
+    scheduleScreenshot();
+
     const revealItems = document.querySelectorAll("[data-reveal]");
     if ("IntersectionObserver" in window) {
       const revealObserver = new IntersectionObserver((entries, observer) => {
